@@ -1,7 +1,13 @@
 @import "tailwindcss";
 
-/* Base resets */
-* {
+@theme {
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #2563eb;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -9,11 +15,13 @@
 
 html,
 body {
-  max-width: 100vw;
   overflow-x: hidden;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
 }
