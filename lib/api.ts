@@ -4,13 +4,12 @@
 
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_URL ||
-  'https://api.escuelajs.co/api/v1'
+  'https://api.escuelajs.co/api/v1'   // ← fallback if .env is missing
 
 export async function fetcher<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
-
   const url = `${API_BASE_URL}${endpoint}`
 
   const response = await fetch(url, {
@@ -23,9 +22,7 @@ export async function fetcher<T>(
 
   if (!response.ok) {
     const error = await response.json().catch(() => ({}))
-    throw new Error(
-      error.message || `API Error: ${response.status}`
-    )
+    throw new Error(error.message || `API Error: ${response.status}`)
   }
 
   return response.json() as Promise<T>
