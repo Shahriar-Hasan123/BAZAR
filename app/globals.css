@@ -25,3 +25,9 @@ html {
 body {
   font-family: var(--font-sans);
 }
+
+/* Fix mx-auto being overridden by margin reset */
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}

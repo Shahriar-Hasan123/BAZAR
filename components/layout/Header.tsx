@@ -64,7 +64,7 @@ export default function Header() {
                     {/* Sign In */}
                     <Link
                         href="/login"
-                        className="hidden sm:inline-block text-sm font-medium text-gray-700 border border-gray-300 rounded-full px-5 py-2 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all"
+                        className="hidden sm:inline-block text-sm font-medium text-gray-700 border border-gray-300 rounded-full px-6 py-2.5 hover:border-blue-600 hover:text-blue-600 hover:bg-blue-50 transition-all"
                     >
                         Sign In
                     </Link>

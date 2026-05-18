@@ -26,7 +26,7 @@ export default function Footer() {
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
 
         {/* ── MAIN GRID ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 w-full text-center sm:text-left">
 
           {/* ── BRAND COLUMN ── */}
           <div className="flex flex-col gap-3">
@@ -40,7 +40,7 @@ export default function Footer() {
 
           {/* ── LINK GROUPS ── */}
           {Object.entries(FOOTER_LINKS).map(([groupName, links]) => (
-            <div key={groupName} className="flex flex-col gap-4">
+            <div key={groupName} className="flex flex-col gap-4 sm:items-start items-center">
               <h3 className="text-white font-semibold text-lg tracking-wide">
                 {groupName}
               </h3>
@@ -62,8 +62,8 @@ export default function Footer() {
         </div>
 
         {/* ── BOTTOM BAR ── */}
-        <div className="border-t border-gray-800 pt-6 flex flex-col-reverse sm:flex-row items-center justify-between gap-3 w-full">
-          <p className="text-gray-500 text-xs text-center sm:text-left">
+        <div className="border-t border-gray-800 pt-6 flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+          <p className="text-gray-500 text-xs text-center">
             © {currentYear} Bazar. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-xs text-gray-500">
