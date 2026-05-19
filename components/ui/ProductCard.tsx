@@ -5,6 +5,7 @@ import Link from 'next/link'
 import type { Product } from '@/types'
 import { getSafeImageUrl } from '@/utils/image'
 import { formatPrice } from '@/utils/format'
+import { useCartStore } from '@/store/cartStore'
 
 interface ProductCardProps {
   product: Product
@@ -12,6 +13,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const imageUrl = getSafeImageUrl(product.images[0])
+  const addItem = useCartStore((state) => state.addItem)
 
   return (
     <article className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-300">
@@ -32,8 +34,6 @@ export default function ProductCard({ product }: ProductCardProps) {
               'https://placehold.co/400x400/e2e8f0/94a3b8?text=No+Image'
           }}
         />
-
-        {/* Category badge */}
         <div className="absolute top-3 left-3">
           <span className="bg-white/90 backdrop-blur-sm text-xs font-medium px-2.5 py-1 rounded-full text-gray-600">
             {product.category.name}
@@ -43,35 +43,26 @@ export default function ProductCard({ product }: ProductCardProps) {
 
       {/* ── PRODUCT INFO ── */}
       <div className="p-4">
-
-        {/* Title */}
         <Link href={`/products/${product.id}`}>
           <h3 className="text-sm font-medium text-gray-900 line-clamp-2 hover:text-blue-600 transition-colors mb-3 min-h-[2.5rem]">
             {product.title}
           </h3>
         </Link>
 
-        {/* Price and Add to Cart */}
-        <div className="flex flex-col gap-3">
-          
+        <div className="flex items-center justify-between gap-2">
           <span className="text-lg font-bold text-gray-900">
             {formatPrice(product.price)}
           </span>
 
+          {/* ← Now calls addItem from Zustand */}
           <button
-            className="w-full group flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-gradient-to-br from-blue-600 via-blue-600 to-indigo-700 text-white font-bold text-sm hover:from-blue-700 hover:via-blue-700 hover:to-indigo-800 active:scale-95 transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-blue-500/30 relative overflow-hidden"
+            onClick={() => addItem(product)}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 active:bg-blue-800 transition-colors"
             aria-label={`Add ${product.title} to cart`}
           >
-            {/* Shimmer effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 group-hover:animate-pulse" />
-            
-            {/* Icon */}
+            Add
             <CartIcon />
-            
-            {/* Text */}
-            <span className="relative z-10">Add to Cart</span>
           </button>
-
         </div>
       </div>
 
