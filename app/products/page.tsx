@@ -4,12 +4,14 @@ import { getProducts } from '@/services/products'
 import ProductCard from '@/components/ui/ProductCard'
 import { ProductGridSkeleton } from '@/components/ui/Skeletons'
 import ProductsFilter from '@/features/products/ProductsFilter'
+import { sortProducts, type SortOption } from '@/utils/sort'
 
 interface SearchParams {
   categoryId?: string
   title?: string
   price_min?: string
   price_max?: string
+  sort?: string
 }
 
 interface ProductsPageProps {
@@ -40,7 +42,12 @@ export default async function ProductsPage({
     getCategories(),
   ])
 
-  // Filter out invalid categories
+  // Sort products client side
+  const sortedProducts = sortProducts(
+    products,
+    (params.sort as SortOption) || 'default'
+  )
+
   const validCategories = categories.filter(
     (cat) =>
       cat.name &&
@@ -58,7 +65,7 @@ export default async function ProductsPage({
             All Products
           </h1>
           <p className="text-gray-500">
-            {products.length} products found
+            {sortedProducts.length} products found
           </p>
         </div>
 
@@ -68,9 +75,9 @@ export default async function ProductsPage({
         {/* ── PRODUCTS GRID ── */}
         <div className="mt-8">
           <Suspense fallback={<ProductGridSkeleton count={12} />}>
-            {products.length > 0 ? (
+            {sortedProducts.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                {products.map((product) => (
+                {sortedProducts.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
               </div>
@@ -103,8 +110,18 @@ function EmptyState() {
 
 function BoxIcon() {
   return (
-    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+    <svg
+      className="w-8 h-8 text-gray-400"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+      />
     </svg>
   )
 }
