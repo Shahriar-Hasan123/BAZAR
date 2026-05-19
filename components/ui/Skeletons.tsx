@@ -75,7 +75,10 @@ export function CategoriesGridSkeleton() {
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
       {Array.from({ length: 6 }).map((_, i) => (
-        <CategoryCardSkeleton key={i} />
+        <div key={i} className="flex flex-col items-center gap-3">
+          <div className="aspect-square w-full rounded-2xl bg-gray-200 animate-pulse" />
+          <div className="h-3 w-2/3 bg-gray-200 rounded animate-pulse" />
+        </div>
       ))}
     </div>
   )

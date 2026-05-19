@@ -20,6 +20,21 @@ export async function getProfile(token: string): Promise<User> {
   });
 }
 
+// Update user profile
+export async function updateUser(
+  id: number,
+  data: { name?: string; email?: string; avatar?: string },
+  token: string
+): Promise<User> {
+  return fetcher<User>(`/users/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
+}
+
 // Register new user
 export async function register(data: RegisterData): Promise<User> {
   return fetcher<User>("/users", {
