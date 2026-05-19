@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useCartStore } from '@/store/cartStore'
 
@@ -12,9 +12,15 @@ const NAV_LINKS = [
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMounted, setIsMounted] = useState(false)
 
     // ← Real cart count from Zustand store
     const totalItems = useCartStore((state) => state.getTotalItems())
+
+    // Prevent hydration mismatch by only rendering cart count after mount
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     return (
         <header className="sticky top-0 z-50 w-full bg-white border-b border-gray-200">
@@ -50,10 +56,10 @@ export default function Header() {
                         <Link
                             href="/cart"
                             className="relative p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-                            aria-label={`Shopping cart with ${totalItems} items`}
+                            aria-label={`Shopping cart${isMounted && totalItems > 0 ? ` with ${totalItems} items` : ''}`}
                         >
                             <CartIcon />
-                            {totalItems > 0 && (
+                            {isMounted && totalItems > 0 && (
                                 <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                                     {totalItems > 99 ? '99+' : totalItems}
                                 </span>
