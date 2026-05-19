@@ -36,7 +36,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-blue-600">
             <BagIcon />
-            <span>Bazar</span>
+            <span>ShopNext</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -59,11 +59,12 @@ export default function Header() {
             <Link
               href="/cart"
               className="relative p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-              aria-label={`Shopping cart${isMounted && totalItems > 0 ? ` with ${totalItems} items` : ''}`}
+              suppressHydrationWarning
+              aria-label={`Cart with ${totalItems} items`}
             >
               <CartIcon />
               {isMounted && totalItems > 0 && (
-                <span className="absolute -top-3 -right-1 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
+                <span suppressHydrationWarning className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
                   {totalItems > 99 ? '99+' : totalItems}
                 </span>
               )}
@@ -164,18 +165,18 @@ export default function Header() {
   )
 }
 
-function SearchIcon() {
-  return (
-    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-    </svg>
-  )
-}
-
 function BagIcon() {
   return (
     <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+    </svg>
+  )
+}
+
+function SearchIcon() {
+  return (
+    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
     </svg>
   )
 }

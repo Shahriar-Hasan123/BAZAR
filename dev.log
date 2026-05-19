@@ -1,0 +1,21 @@
+nohup: ignoring input
+
+> ecommerce-store@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.6 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.226:3000
+- Environments: .env.local
+✓ Ready in 551ms
+⚠ The "middleware" file convention is deprecated. Please use "proxy" instead. Learn more: https://nextjs.org/docs/messages/middleware-to-proxy
+
+ GET / 200 in 2.3s (next.js: 307ms, application-code: 1944ms)
+ GET / 200 in 301ms (next.js: 48ms, application-code: 253ms)
+ GET / 200 in 224ms (next.js: 19ms, application-code: 205ms)
+ GET / 200 in 129ms (next.js: 12ms, application-code: 117ms)
+[browser] Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+ GET /products/4 200 in 4.1s (next.js: 1853ms, application-code: 2.2s)
+ GET /categories 200 in 1450ms (next.js: 621ms, application-code: 829ms)
+ GET /categories/furniture 200 in 2.7s (next.js: 1293ms, application-code: 1374ms)
+ GET / 200 in 1486ms (next.js: 5ms, application-code: 1481ms)

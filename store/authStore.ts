@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import Cookies from 'js-cookie'
 import type { User } from '@/types'
 
 interface AuthStore {
@@ -19,16 +20,29 @@ export const useAuthStore = create<AuthStore>()(
       refreshToken: null,
       isAuthenticated: false,
 
-      setAuth: (user, accessToken, refreshToken) =>
-        set({ user, accessToken, refreshToken, isAuthenticated: true }),
+      setAuth: (user, accessToken, refreshToken) => {
+        // =========================================
+        // Save token to cookie so middleware can read it
+        // expires: 20 days (matches API token lifetime)
+        // =========================================
+        Cookies.set('shopnext-token', accessToken, {
+          expires: 20,
+          sameSite: 'lax',
+        })
 
-      logout: () =>
+        set({ user, accessToken, refreshToken, isAuthenticated: true })
+      },
+
+      logout: () => {
+        // Remove cookie on logout
+        Cookies.remove('shopnext-token')
         set({
           user: null,
           accessToken: null,
           refreshToken: null,
           isAuthenticated: false,
-        }),
+        })
+      },
     }),
     { name: 'shopnext-auth' }
   )
