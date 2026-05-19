@@ -81,7 +81,7 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-subtle flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-bg-primary flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
 
         {/* Header */}
@@ -101,7 +101,7 @@ export default function RegisterPage() {
         <div className="card p-8 shadow-sm">
 
           {apiError && (
-            <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-100 text-sm text-red-600">
+            <div className="mb-5 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-700 text-sm text-red-600">
               {apiError}
             </div>
           )}
@@ -136,7 +136,7 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-600"
+                  className="absolute inset-y-0 right-3 flex items-center text-subtle hover:text-text-primary"
                 >
                   {showPassword ? <EyeOffIcon /> : <EyeIcon />}
                 </button>

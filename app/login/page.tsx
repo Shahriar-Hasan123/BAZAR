@@ -51,7 +51,7 @@ function LoginContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-bg-primary flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
 
         <div className="text-center mb-8">
@@ -66,15 +66,15 @@ function LoginContent() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+        <div className="bg-bg-primary rounded-2xl border border-base p-8 shadow-sm">
 
           {apiError && (
-            <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-100 text-sm text-red-600">
+            <div className="mb-5 p-3 rounded-xl bg-red-50 dark:bg-red-900/20 border border-red-300 dark:border-red-700 text-sm text-red-600">
               {apiError}
             </div>
           )}
 
-          <div className="mb-5 p-3 rounded-xl bg-blue-50 border border-blue-100 text-xs text-blue-600">
+          <div className="mb-5 p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-300 dark:border-blue-700 text-xs text-blue-600">
             <p className="font-semibold mb-1">Demo credentials:</p>
             <p>Email: john@mail.com</p>
             <p>Password: changeme</p>
@@ -102,7 +102,7 @@ function LoginContent() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-gray-600"
+                  className="absolute inset-y-0 right-3 flex items-center text-subtle hover:text-text-primary"
                 >
                   {showPassword ? <EyeOffIcon /> : <EyeIcon />}
                 </button>
