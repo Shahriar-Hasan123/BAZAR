@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Geist } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import ThemeProvider from '@/providers/ThemeProvider'
 import './globals.css'
 
 const geist = Geist({
@@ -23,22 +24,26 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={`${geist.variable} antialiased bg-gray-50`}>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${geist.variable} font-sans antialiased transition-colors duration-300`}
+      >
+        <ThemeProvider>
 
-        {/* flex-col + min-h-screen pushes footer to bottom */}
-        <div className="flex flex-col min-h-screen">
+          {/* flex-col + min-h-screen pushes footer to bottom */}
+          <div className="flex flex-col min-h-screen">
 
-          <Header />
+            <Header />
 
-          <main className="flex-1">
-            {children}
-          </main>
+            <main className="flex-1">
+              {children}
+            </main>
 
-          <Footer />
+            <Footer />
 
-        </div>
+          </div>
 
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -25,7 +25,7 @@ export const useAuthStore = create<AuthStore>()(
         // Save token to cookie so middleware can read it
         // expires: 20 days (matches API token lifetime)
         // =========================================
-        Cookies.set('shopnext-token', accessToken, {
+        Cookies.set('bazar-token', accessToken, {
           expires: 20,
           sameSite: 'lax',
         })
@@ -35,7 +35,7 @@ export const useAuthStore = create<AuthStore>()(
 
       logout: () => {
         // Remove cookie on logout
-        Cookies.remove('shopnext-token')
+        Cookies.remove('bazar-token')
         set({
           user: null,
           accessToken: null,
@@ -44,6 +44,6 @@ export const useAuthStore = create<AuthStore>()(
         })
       },
     }),
-    { name: 'shopnext-auth' }
+    { name: 'bazar-auth' }
   )
 )

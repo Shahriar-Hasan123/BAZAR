@@ -32,7 +32,7 @@ export default function SearchInput({ initialValue = '' }: SearchInputProps) {
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search products..."
         autoFocus
-        className="w-full pl-11 pr-10 py-4 rounded-2xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base shadow-sm"
+        className="w-full pl-11 pr-10 py-4 rounded-2xl border border-base bg-base text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-sm"
       />
       {value && (
         <button

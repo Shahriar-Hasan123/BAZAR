@@ -84,7 +84,7 @@ export default async function CategoriesSection() {
               </div>
 
               {/* ── CATEGORY NAME ── */}
-              <p className="text-sm font-medium text-gray-800 group-hover:text-blue-600 transition-colors text-center capitalize">
+              <p className="text-sm font-medium text-base group-hover:text-blue-600 transition-colors text-center capitalize">
                 {category.name}
               </p>
 

@@ -123,7 +123,7 @@ export default function ProductsFilter({
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
           placeholder="Search products..."
-          className="w-full pl-11 pr-10 py-3 rounded-2xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition-shadow"
+          className="w-full pl-11 pr-10 py-3 rounded-2xl border border-base bg-base text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition-shadow"
         />
         {searchValue && (
           <button
@@ -137,7 +137,7 @@ export default function ProductsFilter({
       </div>
 
       {/* ── CATEGORY + SORT ROW ── */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-4 space-y-4">
+      <div className="card space-y-4">
 
         {/* Category tabs */}
         <div>
@@ -176,11 +176,11 @@ export default function ProductsFilter({
           Stack on mobile
           Side by side on md and up
         */}
-        <div className="flex flex-col md:flex-row gap-4 pt-2 border-t border-gray-100">
+        <div className="flex flex-col md:flex-row gap-4 pt-2 border-t border-base">
 
           {/* Price Range */}
           <div className="flex-1">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            <h3 className="text-sm font-semibold text-base mb-3">
               Price Range
             </h3>
             <div className="flex items-center gap-2">
@@ -194,7 +194,7 @@ export default function ProductsFilter({
                   onChange={(e) => setPriceMin(e.target.value)}
                   placeholder="Min"
                   min={0}
-                  className="w-full pl-7 pr-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-7 pr-3 py-2 rounded-xl border border-base bg-base text-base text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
               <span className="text-gray-400 text-sm flex-shrink-0">to</span>
@@ -208,7 +208,7 @@ export default function ProductsFilter({
                   onChange={(e) => setPriceMax(e.target.value)}
                   placeholder="Max"
                   min={0}
-                  className="w-full pl-7 pr-3 py-2 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full pl-7 pr-3 py-2 rounded-xl border border-base bg-base text-base text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
               </div>
             </div>
@@ -216,13 +216,13 @@ export default function ProductsFilter({
 
           {/* Sort */}
           <div className="md:w-56">
-            <h3 className="text-sm font-semibold text-gray-700 mb-3">
+            <h3 className="text-sm font-semibold text-base mb-3">
               Sort By
             </h3>
             <select
               value={currentSort}
               onChange={(e) => updateParam('sort', e.target.value)}
-              className="w-full px-3 py-2 rounded-xl border border-gray-200 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+              className="w-full px-3 py-2 rounded-xl border border-base text-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-base"
             >
               {SORT_OPTIONS.map((option) => (
                 <option key={option.value} value={option.value}>

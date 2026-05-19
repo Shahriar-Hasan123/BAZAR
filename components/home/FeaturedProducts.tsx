@@ -6,7 +6,7 @@ export default async function FeaturedProducts() {
 
   if (products.length === 0) {
     return (
-      <div className="text-center py-16 text-gray-500">
+      <div className="text-center py-16 text-subtle">
         <p className="text-lg">No products found.</p>
       </div>
     )

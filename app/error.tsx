@@ -24,10 +24,10 @@ export default function GlobalError({ error, reset }: ErrorProps) {
                 </div>
 
                 {/* Message */}
-                <h2 className="text-2xl font-bold text-gray-900 mb-3">
+                <h2 className="text-2xl font-bold text-base mb-3">
                     Something went wrong
                 </h2>
-                <p className="text-gray-500 mb-8 leading-relaxed">
+                <p className="text-subtle mb-8 leading-relaxed">
                     We could not load this page. This is usually a temporary issue.
                     Please try again.
                 </p>
@@ -43,7 +43,7 @@ export default function GlobalError({ error, reset }: ErrorProps) {
 
                     <Link
                         href="/"
-                        className="px-8 py-3.5 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold text-base hover:bg-blue-50 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg"
+                        className="px-8 py-3.5 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold text-base hover:bg-subtle active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg"
                     >
                         Go home
                     </Link>

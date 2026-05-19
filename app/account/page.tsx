@@ -70,19 +70,19 @@ export default function AccountPage() {
   )
 
   const inputClass =
-    'w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow'
+    'w-full px-4 py-2.5 rounded-xl border border-base text-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-base'
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">My Account</h1>
+        <h1 className="text-3xl font-bold text-base mb-8">My Account</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
           {/* ── PROFILE CARD ── */}
           <div className="md:col-span-1">
-            <div className="bg-white rounded-2xl border border-gray-100 p-6 text-center">
+            <div className="card text-center">
 
               {/* Avatar */}
               <div className="relative w-20 h-20 mx-auto mb-4">
@@ -94,10 +94,10 @@ export default function AccountPage() {
                 />
               </div>
 
-              <h2 className="text-lg font-bold text-gray-900 mb-1">
+              <h2 className="text-lg font-bold text-base mb-1">
                 {user.name}
               </h2>
-              <p className="text-sm text-gray-500 mb-2">{user.email}</p>
+              <p className="text-sm text-subtle mb-2">{user.email}</p>
 
               <span className={`inline-flex px-3 py-1 rounded-full text-xs font-semibold ${user.role === 'admin'
                   ? 'bg-purple-100 text-purple-700'
@@ -120,9 +120,9 @@ export default function AccountPage() {
           <div className="md:col-span-2 space-y-6">
 
             {/* ── EDIT PROFILE ── */}
-            <div className="bg-white rounded-2xl border border-gray-100 p-6">
+            <div className="card">
               <div className="flex items-center justify-between mb-5">
-                <h3 className="text-base font-bold text-gray-900">
+                <h3 className="text-base font-bold text-base">
                   Profile Information
                 </h3>
                 {!isEditing && (
@@ -153,7 +153,7 @@ export default function AccountPage() {
 
                 {/* Name */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label className="block text-sm font-medium text-base mb-1.5">
                     Full Name
                   </label>
                   {isEditing ? (
@@ -164,7 +164,7 @@ export default function AccountPage() {
                       className={inputClass}
                     />
                   ) : (
-                    <p className="text-sm text-gray-900 px-4 py-2.5 bg-gray-50 rounded-xl">
+                    <p className="text-sm text-base px-4 py-2.5 bg-subtle rounded-xl">
                       {user.name}
                     </p>
                   )}
@@ -172,7 +172,7 @@ export default function AccountPage() {
 
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label className="block text-sm font-medium text-base mb-1.5">
                     Email Address
                   </label>
                   {isEditing ? (
@@ -183,7 +183,7 @@ export default function AccountPage() {
                       className={inputClass}
                     />
                   ) : (
-                    <p className="text-sm text-gray-900 px-4 py-2.5 bg-gray-50 rounded-xl">
+                    <p className="text-sm text-base px-4 py-2.5 bg-subtle rounded-xl">
                       {user.email}
                     </p>
                   )}
@@ -191,10 +191,10 @@ export default function AccountPage() {
 
                 {/* Role — read only */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label className="block text-sm font-medium text-base mb-1.5">
                     Role
                   </label>
-                  <p className="text-sm text-gray-900 px-4 py-2.5 bg-gray-50 rounded-xl capitalize">
+                  <p className="text-sm text-base px-4 py-2.5 bg-subtle rounded-xl capitalize">
                     {user.role}
                   </p>
                 </div>
@@ -277,9 +277,9 @@ export default function AccountPage() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                    className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-subtle transition-colors group"
                   >
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-blue-600 transition-colors">
+                    <span className="text-sm font-medium text-base group-hover:text-blue-600 transition-colors">
                       {link.label}
                     </span>
                     <ChevronRightIcon />

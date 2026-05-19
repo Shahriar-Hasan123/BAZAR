@@ -11,10 +11,10 @@ import { formatPrice } from '@/utils/format'
 
 // Input class — reused across all inputs
 const inputClass =
-  'w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow'
+  'w-full px-4 py-2.5 rounded-xl border border-base text-sm text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-base'
 
 const errorInputClass =
-  'w-full px-4 py-2.5 rounded-xl border border-red-300 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-shadow bg-red-50'
+  'w-full px-4 py-2.5 rounded-xl border border-red-300 text-sm text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-shadow bg-red-50'
 
 export default function CheckoutForm() {
   const router = useRouter()
@@ -61,8 +61,8 @@ export default function CheckoutForm() {
       <div className="lg:col-span-2 space-y-6">
 
         {/* Contact Info */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
+        <div className="card">
+          <h2 className="text-base font-bold text-base mb-5 flex items-center gap-2">
             <StepBadge number={1} />
             Contact Information
           </h2>
@@ -99,8 +99,8 @@ export default function CheckoutForm() {
         </div>
 
         {/* Shipping Address */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-base font-bold text-gray-900 mb-5 flex items-center gap-2">
+        <div className="card">
+          <h2 className="text-base font-bold text-base mb-5 flex items-center gap-2">
             <StepBadge number={2} />
             Shipping Address
           </h2>
@@ -156,12 +156,12 @@ export default function CheckoutForm() {
         </div>
 
         {/* Payment */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-base font-bold text-gray-900 mb-1 flex items-center gap-2">
+        <div className="card">
+          <h2 className="text-base font-bold text-base mb-1 flex items-center gap-2">
             <StepBadge number={3} />
             Payment Details
           </h2>
-          <p className="text-xs text-gray-400 mb-5 ml-8">
+          <p className="text-xs text-subtle mb-5 ml-8">
             This is a demo. Use any 16-digit number.
           </p>
 
@@ -205,9 +205,9 @@ export default function CheckoutForm() {
 
       {/* ── RIGHT: ORDER SUMMARY ── */}
       <div className="lg:col-span-1">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 sticky top-24">
+        <div className="card sticky top-24">
 
-          <h2 className="text-base font-bold text-gray-900 mb-5">
+          <h2 className="text-base font-bold text-base mb-5">
             Order Summary
           </h2>
 
@@ -215,11 +215,11 @@ export default function CheckoutForm() {
           <div className="space-y-3 mb-5 max-h-48 overflow-y-auto">
             {items.map((item) => (
               <div key={item.product.id} className="flex justify-between text-sm">
-                <span className="text-gray-600 line-clamp-1 flex-1 mr-2">
+                <span className="text-subtle line-clamp-1 flex-1 mr-2">
                   {item.product.title}
-                  <span className="text-gray-400 ml-1">×{item.quantity}</span>
+                  <span className="text-subtle ml-1">×{item.quantity}</span>
                 </span>
-                <span className="font-medium text-gray-900 flex-shrink-0">
+                <span className="font-medium text-base flex-shrink-0">
                   {formatPrice(item.product.price * item.quantity)}
                 </span>
               </div>
@@ -227,24 +227,24 @@ export default function CheckoutForm() {
           </div>
 
           {/* Totals */}
-          <div className="space-y-2 py-4 border-t border-gray-100">
+          <div className="space-y-2 py-4 border-t border-base">
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">
+              <span className="text-subtle">
                 Subtotal ({getTotalItems()} items)
               </span>
               <span className="font-medium">{formatPrice(subtotal)}</span>
             </div>
             <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Shipping</span>
+              <span className="text-subtle">Shipping</span>
               <span className={`font-medium ${shipping === 0 ? 'text-green-600' : ''}`}>
                 {shipping === 0 ? 'Free' : formatPrice(shipping)}
               </span>
             </div>
           </div>
 
-          <div className="flex justify-between items-center py-4 border-t border-gray-100 mb-5">
-            <span className="font-bold text-gray-900">Total</span>
-            <span className="text-xl font-bold text-gray-900">
+          <div className="flex justify-between items-center py-4 border-t border-base mb-5">
+            <span className="font-bold text-base">Total</span>
+            <span className="text-xl font-bold text-base">
               {formatPrice(total)}
             </span>
           </div>

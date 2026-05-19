@@ -16,7 +16,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem)
 
   return (
-    <article className="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-300">
+    <article className="group card overflow-hidden hover:shadow-lg transition-all duration-300">
 
       {/* ── PRODUCT IMAGE ── */}
       <Link
@@ -44,13 +44,13 @@ export default function ProductCard({ product }: ProductCardProps) {
       {/* ── PRODUCT INFO ── */}
       <div className="p-4">
         <Link href={`/products/${product.id}`}>
-          <h3 className="text-sm font-medium text-gray-900 line-clamp-2 hover:text-blue-600 transition-colors mb-3 min-h-[2.5rem]">
+          <h3 className="text-sm font-medium text-base line-clamp-2 hover:text-blue-600 transition-colors mb-3 min-h-[2.5rem]">
             {product.title}
           </h3>
         </Link>
 
         <div className="flex items-center justify-between gap-2">
-          <span className="text-lg font-bold text-gray-900">
+          <span className="text-lg font-bold text-base">
             {formatPrice(product.price)}
           </span>
 

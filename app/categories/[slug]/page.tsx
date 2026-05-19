@@ -27,11 +27,11 @@ export async function generateMetadata({
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  clothes:     'from-pink-500 to-rose-600',
+  clothes: 'from-pink-500 to-rose-600',
   electronics: 'from-blue-500 to-indigo-600',
-  furniture:   'from-amber-500 to-orange-600',
-  shoes:       'from-green-500 to-emerald-600',
-  others:      'from-purple-500 to-violet-600',
+  furniture: 'from-amber-500 to-orange-600',
+  shoes: 'from-green-500 to-emerald-600',
+  others: 'from-purple-500 to-violet-600',
 }
 
 export default async function CategoryDetailPage({
@@ -103,19 +103,40 @@ export default async function CategoryDetailPage({
             ))}
           </div>
         ) : (
-          <div className="text-center py-20">
-            <p className="text-lg font-semibold text-gray-900 mb-2">
+          <div className="flex flex-col items-center text-center py-20 px-4">
+            <div className="w-20 h-20 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center mb-6">
+              <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+              </svg>
+            </div>
+
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
               No products found
+            </h3>
+            <p className="text-sm text-gray-500 mb-8 max-w-xs leading-relaxed">
+              This category doesn't have any products yet. Check back soon or explore our full catalogue.
             </p>
-            <p className="text-gray-500 text-sm mb-6">
-              This category has no products yet.
-            </p>
-            <Link
-              href="/products"
-              className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
-            >
-              Browse All Products
-            </Link>
+
+            <div className="flex flex-col gap-3 w-full max-w-[220px]">
+              <Link
+                href="/products"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium hover:bg-blue-700 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                </svg>
+                Browse all products
+              </Link>
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg border border-gray-200 text-gray-600 text-sm hover:bg-gray-50 transition-colors"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+                Back to home
+              </Link>
+            </div>
           </div>
         )}
       </div>

@@ -18,7 +18,7 @@ function Skeleton({ className }: { className?: string }) {
 // =========================================
 export function ProductCardSkeleton() {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+    <div className="card overflow-hidden">
 
       {/* Image area */}
       <Skeleton className="aspect-square w-full rounded-none" />

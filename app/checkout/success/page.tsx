@@ -10,13 +10,13 @@ export default function SuccessPage() {
           <CheckIcon />
         </div>
 
-        <h1 className="text-3xl font-bold text-gray-900 mb-3">
+        <h1 className="text-3xl font-bold text-base mb-3">
           Order Placed!
         </h1>
-        <p className="text-gray-500 mb-2 leading-relaxed">
+        <p className="text-subtle mb-2 leading-relaxed">
           Thank you for your purchase. Your order has been confirmed and will be shipped soon.
         </p>
-        <p className="text-sm text-gray-400 mb-8">
+        <p className="text-sm text-subtle mb-8">
           A confirmation email has been sent to your inbox.
         </p>
 
@@ -29,7 +29,7 @@ export default function SuccessPage() {
           </Link>
           <Link
             href="/"
-            className="px-8 py-3 rounded-xl border border-gray-200 text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
+              className="px-8 py-3 rounded-xl border border-base text-base font-semibold hover:bg-subtle transition-colors"
           >
             Go Home
           </Link>

@@ -12,9 +12,9 @@ export default function OrderSummary() {
   const total = subtotal + shipping
 
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 p-6 h-fit sticky top-24">
+    <div className="card h-fit sticky top-24">
 
-      <h2 className="text-lg font-bold text-gray-900 mb-6">
+      <h2 className="text-lg font-bold text-base mb-6">
         Order Summary
       </h2>
 
@@ -22,17 +22,17 @@ export default function OrderSummary() {
       <div className="space-y-3 mb-6">
 
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">
+          <span className="text-subtle">
             Subtotal ({getTotalItems()} items)
           </span>
-          <span className="font-medium text-gray-900">
+          <span className="font-medium text-base">
             {formatPrice(subtotal)}
           </span>
         </div>
 
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Shipping</span>
-          <span className={`font-medium ${shipping === 0 ? 'text-green-600' : 'text-gray-900'}`}>
+          <span className="text-subtle">Shipping</span>
+          <span className={`font-medium ${shipping === 0 ? 'text-green-600' : 'text-base'}`}>
             {shipping === 0 ? 'Free' : formatPrice(shipping)}
           </span>
         </div>
@@ -47,9 +47,9 @@ export default function OrderSummary() {
       </div>
 
       {/* ── TOTAL ── */}
-      <div className="flex justify-between items-center py-4 border-t border-gray-100 mb-6">
-        <span className="font-bold text-gray-900">Total</span>
-        <span className="text-xl font-bold text-gray-900">
+      <div className="flex justify-between items-center py-4 border-t border-base mb-6">
+        <span className="font-bold text-base">Total</span>
+        <span className="text-xl font-bold text-base">
           {formatPrice(total)}
         </span>
       </div>
@@ -65,13 +65,13 @@ export default function OrderSummary() {
       {/* Continue shopping */}
       <Link
         href="/products"
-        className="block w-full py-3 mt-3 rounded-2xl border border-gray-200 text-gray-700 font-medium text-center hover:bg-gray-50 transition-colors text-sm"
+        className="block w-full py-3 mt-3 rounded-2xl border border-base text-base font-medium text-center hover:bg-subtle transition-colors text-sm"
       >
         Continue Shopping
       </Link>
 
       {/* Trust badges */}
-      <div className="mt-6 pt-6 border-t border-gray-100 space-y-2">
+      <div className="mt-6 pt-6 border-t border-base space-y-2">
         {[
           '🔒 Secure checkout',
           '↩️ Free returns',

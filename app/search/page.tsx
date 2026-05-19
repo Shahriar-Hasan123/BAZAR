@@ -27,12 +27,12 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     : []
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 
         {/* ── HEADER ── */}
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+          <h1 className="text-3xl sm:text-4xl font-bold text-base mb-6">
             Search
           </h1>
 
@@ -43,7 +43,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {/* ── RESULTS ── */}
         {query ? (
           <>
-            <p className="text-gray-500 text-sm mb-6">
+            <p className="text-subtle text-sm mb-6">
               {products.length > 0
                 ? `${products.length} results for "${query}"`
                 : `No results for "${query}"`}
@@ -70,19 +70,22 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
 function EmptySearchState({ query }: { query: string }) {
   return (
-    <div className="text-center py-20">
-      <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+    <div className="flex flex-col items-center justify-center py-20 text-center">
+      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-subtle">
         <SearchIcon />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+
+      <h3 className="mb-2 text-lg font-semibold text-base">
         No results found
       </h3>
-      <p className="text-gray-500 text-sm mb-6">
-        We could not find anything for "{query}". Try a different term.
+
+      <p className="mb-6 text-sm text-subtle">
+        We couldn&apos;t find anything for &ldquo;{query}&rdquo;. Try a different term.
       </p>
+
       <Link
         href="/products"
-        className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+        className="rounded-xl bg-blue-600 px-6 mt-3 py-3 text-sm font-semibold text-white transition-colors hover:bg-blue-700"
       >
         Browse All Products
       </Link>

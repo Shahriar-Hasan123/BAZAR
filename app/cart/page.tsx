@@ -12,25 +12,38 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="min-h-[70vh] flex items-center justify-center px-4">
-        <div className="text-center max-w-sm">
+        <div className="text-center max-w-sm w-full">
 
-          <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <CartIcon />
+          <div className="relative w-20 h-20 mx-auto mb-6">
+            <div className="w-full h-full bg-subtle rounded-full flex items-center justify-center">
+              <CartIcon />
+            </div>
+            <span className="absolute top-1 right-1 w-5 h-5 bg-red-500 text-white text-[11px] font-medium rounded-full flex items-center justify-center border-2 border-white">
+              0
+            </span>
           </div>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-3">
+          <h1 className="text-2xl font-bold text-base mb-3">
             Your cart is empty
           </h1>
-          <p className="text-gray-500 mb-8">
-            Looks like you have not added anything yet.
+          <p className="text-subtle mb-8 leading-relaxed">
+            You haven't added anything yet. Browse our products and find something you'll love.
           </p>
 
-          <Link
-            href="/products"
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
-          >
-            Start Shopping
-          </Link>
+          <div className="flex flex-col mt-3 gap-3">
+            <Link
+              href="/products"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-2xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Start Shopping
+            </Link>
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-2xl border border-base text-subtle text-sm hover:bg-subtle transition-colors"
+            >
+              Back to Home
+            </Link>
+          </div>
 
         </div>
       </div>
@@ -38,14 +51,14 @@ export default function CartPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 
         {/* ── PAGE HEADER ── */}
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+          <h1 className="text-3xl sm:text-4xl font-bold text-base">
             Shopping Cart
-            <span className="text-lg font-normal text-gray-400 ml-3">
+            <span className="text-lg font-normal text-subtle ml-3">
               ({items.length} {items.length === 1 ? 'item' : 'items'})
             </span>
           </h1>
@@ -68,7 +81,7 @@ export default function CartPage() {
 
           {/* ── CART ITEMS ── */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-2xl border border-gray-100 px-6">
+            <div className="card px-6">
               {items.map((item) => (
                 <CartItem key={item.product.id} item={item} />
               ))}

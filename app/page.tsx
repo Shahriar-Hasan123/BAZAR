@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/Skeletons'
 
 export const metadata = {
-  title: 'ShopNext — Modern eCommerce Store',
+  title: 'Bazar — Modern eCommerce Store',
   description: 'Discover amazing products at unbeatable prices.',
 }
 
@@ -21,14 +21,14 @@ export default function HomePage() {
       <HeroSection />
 
       {/* ── CATEGORIES ── */}
-      <section className="py-16 lg:py-20 bg-white mt-1 lg:mt-6">
+      <section className="py-8 lg:py-10 bg-base mt-1 lg:mt-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div className="mt-6">
+          <div className="flex items-end justify-between mb-6">
+            <div>
               <p className="text-orange-500 text-sm font-semibold uppercase tracking-wider mb-2">
                 Explore
               </p>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+              <h2 className="text-lg sm:text-xl font-bold text-base">
                 Shop by Category
               </h2>
             </div>
@@ -41,15 +41,15 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED PRODUCTS ── */}
-      <section className="py-24 lg:py-32 bg-gray-50">
+      <section className="py-8 lg:py-12 bg-subtle">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-          <div className="flex items-end justify-between mb-10">
-            <div className="mt-6">
+          <div className="flex items-end justify-between mb-6">
+            <div>
               <p className="text-orange-500 text-sm font-semibold uppercase tracking-wider mb-2">
                 Handpicked
               </p>
-              <h2 className="text-lg sm:text-xl font-bold text-gray-900">
+              <h2 className="text-lg sm:text-xl font-bold text-base">
                 Featured Products
               </h2>
             </div>
@@ -60,10 +60,10 @@ export default function HomePage() {
           </Suspense>
 
           {/* ── VIEW ALL LINK ── */}
-          <div className="mt-16 mb-8 text-center">
+          <div className="mt-8 mb-4 text-center">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-gray-200 bg-white text-gray-700 font-semibold hover:bg-gray-50 hover:border-gray-300 transition-all text-sm sm:text-base shadow-sm"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-xl border border-base bg-base text-base font-semibold hover:bg-subtle transition-all text-sm sm:text-base shadow-sm"
             >
               View All Products
               <ArrowRightIcon />

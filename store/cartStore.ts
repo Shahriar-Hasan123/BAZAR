@@ -113,7 +113,7 @@ export const useCartStore = create<CartStore>()(
             },
         }),
         {
-            name: 'shopnext-cart', // localStorage key
+            name: 'bazar-cart', // localStorage key
         }
     )
 )

@@ -7,7 +7,7 @@ export default function HeroSection() {
                 <div className="relative w-full rounded-lg sm:rounded-xl overflow-hidden h-40 sm:h-56 md:h-64 lg:h-72 shadow-md hover:shadow-lg transition-shadow">
                     <Image
                         src="/hero.jpg"
-                        alt="ShopNext banner"
+                        alt="Bazar banner"
                         fill
                         priority
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 95vw, 90vw"

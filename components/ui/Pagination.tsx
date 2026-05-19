@@ -88,7 +88,7 @@ export default function Pagination({
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={!hasPrevPage}
-        className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium border border-base bg-base text-subtle hover:bg-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         <ChevronLeftIcon />
         Prev
@@ -113,7 +113,7 @@ export default function Pagination({
               className={`w-9 h-9 rounded-xl text-sm font-medium transition-colors ${
                 currentPage === page
                   ? 'bg-blue-600 text-white'
-                  : 'bg-white border border-gray-200 text-gray-700 hover:bg-gray-50'
+                  : 'bg-base border border-base text-subtle hover:bg-subtle'
               }`}
             >
               {page}
@@ -126,7 +126,7 @@ export default function Pagination({
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={!hasNextPage}
-        className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+        className="flex items-center gap-1.5 px-4 py-2 rounded-xl text-sm font-medium border border-base bg-base text-subtle hover:bg-subtle disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
       >
         Next
         <ChevronRightIcon />

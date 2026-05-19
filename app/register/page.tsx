@@ -11,8 +11,8 @@ import { login, getProfile } from '@/services/auth'
 import { useAuthStore } from '@/store/authStore'
 import FormField from '@/components/ui/FormField'
 
-const inputClass = 'w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow'
-const errorInputClass = 'w-full px-4 py-2.5 rounded-xl border border-red-300 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-shadow bg-red-50'
+const inputClass = 'w-full px-4 py-2.5 rounded-xl border border-base text-sm text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow bg-base'
+const errorInputClass = 'w-full px-4 py-2.5 rounded-xl border border-red-300 text-sm text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-shadow bg-red-50'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -81,24 +81,24 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4 py-12">
+    <div className="min-h-screen bg-subtle flex items-center justify-center px-4 py-12">
       <div className="w-full max-w-md">
 
         {/* Header */}
         <div className="text-center mb-8">
           <Link href="/" className="text-2xl font-bold text-blue-600">
-            ShopNext
+            Bazar
           </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mt-6 mb-2">
+          <h1 className="text-2xl font-bold text-base mt-6 mb-2">
             Create an account
           </h1>
-          <p className="text-gray-500 text-sm">
-            Join ShopNext and start shopping today
+          <p className="text-subtle text-sm">
+            Join Bazar and start shopping today
           </p>
         </div>
 
         {/* Card */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-8 shadow-sm">
+        <div className="card p-8 shadow-sm">
 
           {apiError && (
             <div className="mb-5 p-3 rounded-xl bg-red-50 border border-red-100 text-sm text-red-600">
@@ -174,7 +174,7 @@ export default function RegisterPage() {
           </form>
         </div>
 
-        <p className="text-center text-sm text-gray-500 mt-6">
+        <p className="text-center text-sm text-subtle mt-6">
           Already have an account?{' '}
           <Link href="/login" className="text-blue-600 font-medium hover:underline">
             Sign in

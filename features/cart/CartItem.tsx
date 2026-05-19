@@ -17,14 +17,14 @@ export default function CartItem({ item }: CartItemProps) {
   const imageUrl = getSafeImageUrl(product.images[0])
 
   return (
-    <div className="flex gap-4 py-6 border-b border-gray-100 last:border-0">
+    <div className="flex gap-4 py-6 border-b border-base last:border-0">
 
       {/* ── PRODUCT IMAGE ── */}
       <Link
         href={`/products/${product.id}`}
         className="flex-shrink-0"
       >
-        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-gray-100">
+        <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden bg-subtle">
           <Image
             src={imageUrl}
             alt={product.title}
@@ -40,13 +40,13 @@ export default function CartItem({ item }: CartItemProps) {
 
         {/* Title */}
         <Link href={`/products/${product.id}`}>
-          <h3 className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors line-clamp-2 mb-1">
+          <h3 className="text-sm font-medium text-base hover:text-blue-600 transition-colors line-clamp-2 mb-1">
             {product.title}
           </h3>
         </Link>
 
         {/* Category */}
-        <p className="text-xs text-gray-400 mb-3 capitalize">
+        <p className="text-xs text-subtle mb-3 capitalize">
           {product.category.name}
         </p>
 
@@ -54,7 +54,7 @@ export default function CartItem({ item }: CartItemProps) {
         <div className="flex items-center justify-between gap-4 flex-wrap">
 
           {/* Price */}
-          <span className="text-base font-bold text-gray-900">
+          <span className="text-base font-bold text-base">
             {formatPrice(product.price * quantity)}
           </span>
 
@@ -64,21 +64,21 @@ export default function CartItem({ item }: CartItemProps) {
             {/* Decrease */}
             <button
               onClick={() => updateQuantity(product.id, quantity - 1)}
-              className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 transition-colors disabled:opacity-40"
+              className="w-8 h-8 rounded-lg border border-base flex items-center justify-center text-subtle hover:bg-subtle transition-colors disabled:opacity-40"
               aria-label="Decrease quantity"
             >
               <MinusIcon />
             </button>
 
             {/* Quantity display */}
-            <span className="w-8 text-center text-sm font-semibold text-gray-900">
+            <span className="w-8 text-center text-sm font-semibold text-base">
               {quantity}
             </span>
 
             {/* Increase */}
             <button
               onClick={() => updateQuantity(product.id, quantity + 1)}
-              className="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 transition-colors"
+              className="w-8 h-8 rounded-lg border border-base flex items-center justify-center text-subtle hover:bg-subtle transition-colors"
               aria-label="Increase quantity"
             >
               <PlusIcon />

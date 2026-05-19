@@ -36,7 +36,7 @@ export default async function CategoriesPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 
         {/* ── HEADER ── */}
@@ -44,7 +44,7 @@ export default async function CategoriesPage() {
           <p className="text-blue-600 text-sm font-semibold uppercase tracking-wider mb-2">
             Browse
           </p>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-bold text-base">
             All Categories
           </h1>
         </div>

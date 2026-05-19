@@ -13,7 +13,7 @@ export default function FormField({
 }: FormFieldProps) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm font-medium text-gray-700">
+      <label className="block text-sm font-medium text-base">
         {label}
         {required && (
           <span className="text-red-500 ml-1">*</span>

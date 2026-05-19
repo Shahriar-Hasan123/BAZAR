@@ -31,7 +31,7 @@ export default function ProductGallery({
     <div className="space-y-4">
 
       {/* ── MAIN IMAGE ── */}
-      <div className="relative aspect-square rounded-2xl overflow-hidden bg-gray-100">
+      <div className="relative aspect-square rounded-2xl overflow-hidden bg-subtle">
         <Image
           src={selectedImage}
           alt={title}
@@ -53,7 +53,7 @@ export default function ProductGallery({
               className={`relative flex-shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 transition-colors ${
                 selectedIndex === index
                   ? 'border-blue-600'
-                  : 'border-gray-200 hover:border-gray-300'
+                  : 'border-base hover:border-base'
               }`}
             >
               <Image

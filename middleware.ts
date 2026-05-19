@@ -18,7 +18,7 @@ export function middleware(request: NextRequest) {
   // Read the token cookie we set in authStore
   // This works on the server — localStorage does not
   // =========================================
-  const token = request.cookies.get('shopnext-token')
+  const token = request.cookies.get('bazar-token')
   const isAuthenticated = !!token?.value
 
   // ── PROTECT ROUTES ──

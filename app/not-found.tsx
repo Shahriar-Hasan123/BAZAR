@@ -10,24 +10,24 @@ export default function NotFound() {
           404
         </h1>
 
-        <h2 className="text-2xl font-bold text-gray-900 mb-3">
+        <h2 className="text-2xl font-bold text-base mb-3">
           Page not found
         </h2>
 
-        <p className="text-gray-500 mb-8 leading-relaxed">
+        <p className="text-subtle mb-8 leading-relaxed">
           The page you are looking for does not exist or has been moved.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href="/"
-            className="px-8 py-3.5 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white font-semibold text-base hover:from-blue-700 hover:to-indigo-800 active:scale-95 transition-all duration-200 shadow-lg hover:shadow-xl hover:shadow-blue-500/40"
+            className="px-6 py-2.5 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition-colors"
           >
             Go home
           </Link>
           <Link
             href="/products"
-            className="px-8 py-3.5 rounded-xl border-2 border-blue-600 text-blue-600 font-semibold text-base hover:bg-blue-50 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg"
+            className="px-6 py-2.5 rounded-xl border border-base text-base font-medium hover:bg-subtle transition-colors"
           >
             Browse products
           </Link>

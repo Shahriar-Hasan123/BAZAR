@@ -69,15 +69,15 @@ export default async function ProductsPage({
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-subtle">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
 
         {/* ── PAGE HEADER ── */}
         <div className="mb-8">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl sm:text-3xl font-bold text-base mb-2">
             All Products
           </h1>
-          <p className="text-gray-500">
+          <p className="text-subtle">
             Showing {sortedProducts.length} of {totalCount} products
           </p>
         </div>
@@ -118,13 +118,13 @@ export default async function ProductsPage({
 function EmptyState() {
   return (
     <div className="text-center py-20">
-      <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+      <div className="w-16 h-16 bg-subtle rounded-full flex items-center justify-center mx-auto mb-4">
         <BoxIcon />
       </div>
-      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+      <h3 className="text-lg font-semibold text-base mb-2">
         No products found
       </h3>
-      <p className="text-gray-500 text-sm">
+      <p className="text-subtle text-sm">
         Try adjusting your filters or search term.
       </p>
     </div>

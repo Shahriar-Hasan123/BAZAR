@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* =========================================
+   DARK MODE — class strategy
+   next-themes adds 'dark' class to <html>
+   Tailwind v4 reads this automatically
+   ========================================= */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --color-primary: #2563eb;
@@ -29,12 +36,23 @@ html {
 
 body {
   font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Fix mx-auto being overridden by margin reset */
 .mx-auto {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+/* Hide scrollbar for filter tabs on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Blob animation */
