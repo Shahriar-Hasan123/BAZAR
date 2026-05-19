@@ -6,12 +6,12 @@ export async function getProducts(
 ): Promise<Product[]> {
   const searchParams = new URLSearchParams()
 
-  if (params?.limit)        searchParams.set('limit', String(params.limit))
-  if (params?.offset)       searchParams.set('offset', String(params.offset))
-  if (params?.title)        searchParams.set('title', params.title)
-  if (params?.price_min)    searchParams.set('price_min', String(params.price_min))
-  if (params?.price_max)    searchParams.set('price_max', String(params.price_max))
-  if (params?.categoryId)   searchParams.set('categoryId', String(params.categoryId))
+  if (params?.limit) searchParams.set('limit', String(params.limit))
+  if (params?.offset) searchParams.set('offset', String(params.offset))
+  if (params?.title) searchParams.set('title', params.title)
+  if (params?.price_min) searchParams.set('price_min', String(params.price_min))
+  if (params?.price_max) searchParams.set('price_max', String(params.price_max))
+  if (params?.categoryId) searchParams.set('categoryId', String(params.categoryId))
   if (params?.categorySlug) searchParams.set('categorySlug', params.categorySlug)
 
   const query = searchParams.toString()
@@ -32,20 +32,29 @@ export async function getRelatedProducts(id: number): Promise<Product[]> {
   return fetcher<Product[]>(`/products/${id}/related`)
 }
 
-// =========================================
-// FEATURED PRODUCTS
-// We define the limit here explicitly
-// Then slice as a safety net on top
-// Double guarantee: API limit + client slice
-// =========================================
-const FEATURED_PRODUCTS_COUNT = 8 // ← change to 12 anytime in one place
+const FEATURED_PRODUCTS_COUNT = 8
 
 export async function getFeaturedProducts(): Promise<Product[]> {
   const products = await getProducts({
     limit: FEATURED_PRODUCTS_COUNT,
     offset: 0,
   })
-
-  // Safety net — slice even if API ignores limit param
   return products.slice(0, FEATURED_PRODUCTS_COUNT)
+}
+
+// =========================================
+// GET TOTAL PRODUCT COUNT
+// Fetches all products with current filters
+// but no limit — just to count them
+// Used for pagination calculation
+// =========================================
+export async function getProductsCount(
+  params?: Omit<ProductsParams, 'limit' | 'offset'>
+): Promise<number> {
+  const products = await getProducts({
+    ...params,
+    limit: 200, // fetch max to get accurate count
+    offset: 0,
+  })
+  return products.length
 }

@@ -1,9 +1,10 @@
 import { Suspense } from 'react'
 import { getCategories } from '@/services/categories'
-import { getProducts } from '@/services/products'
+import { getProducts, getProductsCount } from '@/services/products'
 import ProductCard from '@/components/ui/ProductCard'
 import { ProductGridSkeleton } from '@/components/ui/Skeletons'
 import ProductsFilter from '@/features/products/ProductsFilter'
+import Pagination from '@/components/ui/Pagination'
 import { sortProducts, type SortOption } from '@/utils/sort'
 
 interface SearchParams {
@@ -12,6 +13,7 @@ interface SearchParams {
   price_min?: string
   price_max?: string
   sort?: string
+  offset?: string
 }
 
 interface ProductsPageProps {
@@ -23,22 +25,28 @@ export const metadata = {
   description: 'Browse our full collection of products.',
 }
 
+const LIMIT = 12
+
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
   const params = await searchParams
 
-  const apiParams = {
+  // Current page offset from URL
+  const offset = params.offset ? Number(params.offset) : 0
+  const currentPage = Math.floor(offset / LIMIT) + 1
+
+  const filterParams = {
     categoryId: params.categoryId ? Number(params.categoryId) : undefined,
     title: params.title || undefined,
     price_min: params.price_min ? Number(params.price_min) : undefined,
     price_max: params.price_max ? Number(params.price_max) : undefined,
-    limit: 12,
-    offset: 0,
   }
 
-  const [products, categories] = await Promise.all([
-    getProducts(apiParams),
+  // Fetch products, total count, and categories in parallel
+  const [products, totalCount, categories] = await Promise.all([
+    getProducts({ ...filterParams, limit: LIMIT, offset }),
+    getProductsCount(filterParams),
     getCategories(),
   ])
 
@@ -47,6 +55,11 @@ export default async function ProductsPage({
     products,
     (params.sort as SortOption) || 'default'
   )
+
+  // Calculate pagination
+  const totalPages = Math.ceil(totalCount / LIMIT)
+  const hasNextPage = currentPage < totalPages
+  const hasPrevPage = currentPage > 1
 
   const validCategories = categories.filter(
     (cat) =>
@@ -65,7 +78,7 @@ export default async function ProductsPage({
             All Products
           </h1>
           <p className="text-gray-500">
-            {sortedProducts.length} products found
+            Showing {sortedProducts.length} of {totalCount} products
           </p>
         </div>
 
@@ -74,13 +87,23 @@ export default async function ProductsPage({
 
         {/* ── PRODUCTS GRID ── */}
         <div className="mt-8">
-          <Suspense fallback={<ProductGridSkeleton count={12} />}>
+          <Suspense fallback={<ProductGridSkeleton count={LIMIT} />}>
             {sortedProducts.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                {sortedProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
+              <>
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+                  {sortedProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+
+                {/* ── PAGINATION ── */}
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  hasNextPage={hasNextPage}
+                  hasPrevPage={hasPrevPage}
+                />
+              </>
             ) : (
               <EmptyState />
             )}
@@ -110,18 +133,8 @@ function EmptyState() {
 
 function BoxIcon() {
   return (
-    <svg
-      className="w-8 h-8 text-gray-400"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
-      />
+    <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
     </svg>
   )
 }
