@@ -5,11 +5,6 @@ import ProductCard from '@/components/ui/ProductCard'
 import { ProductGridSkeleton } from '@/components/ui/Skeletons'
 import ProductsFilter from '@/features/products/ProductsFilter'
 
-// =========================================
-// searchParams comes from the URL
-// Example: /products?categoryId=1&title=shirt
-// Next.js passes it automatically to page.tsx
-// =========================================
 interface SearchParams {
   categoryId?: string
   title?: string
@@ -29,10 +24,8 @@ export const metadata = {
 export default async function ProductsPage({
   searchParams,
 }: ProductsPageProps) {
-  // In Next.js 15, searchParams is a Promise
   const params = await searchParams
 
-  // Convert string params to correct types for the API
   const apiParams = {
     categoryId: params.categoryId ? Number(params.categoryId) : undefined,
     title: params.title || undefined,
@@ -42,11 +35,18 @@ export default async function ProductsPage({
     offset: 0,
   }
 
-  // Fetch products and categories in parallel
   const [products, categories] = await Promise.all([
     getProducts(apiParams),
     getCategories(),
   ])
+
+  // Filter out invalid categories
+  const validCategories = categories.filter(
+    (cat) =>
+      cat.name &&
+      !cat.name.toLowerCase().includes('error') &&
+      !cat.name.toLowerCase().includes('illham')
+  )
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -63,10 +63,7 @@ export default async function ProductsPage({
         </div>
 
         {/* ── FILTERS ── */}
-        <ProductsFilter
-          categories={categories}
-          currentParams={params}
-        />
+        <ProductsFilter categories={validCategories} />
 
         {/* ── PRODUCTS GRID ── */}
         <div className="mt-8">
@@ -88,10 +85,6 @@ export default async function ProductsPage({
   )
 }
 
-// =========================================
-// EMPTY STATE
-// Shows when no products match the filters
-// =========================================
 function EmptyState() {
   return (
     <div className="text-center py-20">
